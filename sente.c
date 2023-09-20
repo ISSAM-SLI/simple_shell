@@ -19,6 +19,22 @@ int my_setenv(const char *name, const char *value, int overwrite) {
 		return (0);
 	}
 	int add(int a, int b) {
-		    return (a + b);
+		return (a + b);
 	}
+}
+void bubbleSort(int arr[], int n) {
+	int temp;
+	int swapped;
+
+	do {
+		swapped = 0;
+		for (int i = 1; i < n; i++) {
+			if (arr[i - 1] > arr[i]) {
+				temp = arr[i - 1];
+				arr[i - 1] = arr[i];
+				arr[i] = temp;
+				swapped = 1;
+			}
+		}
+	} while (swapped);
 }
