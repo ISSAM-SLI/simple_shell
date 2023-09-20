@@ -14,28 +14,26 @@ typedef struct Alias {
 #define HASH_TABLE_SIZE 100
 
 Alias* aliasTable[HASH_TABLE_SIZE] = { NULL };
-
 unsigned int hash(char* alias) {
 	unsigned int hashval = 0;
-	for (; *alias != '\0'; alias++) {
+	for (; *alias != NULL; alias++) {
 		hashval = *alias + (hashval << 5) - hashval;
 	}
 	return hashval % HASH_TABLE_SIZE;
 }
-
 void addAlias(char* alias, char* command) {
 	unsigned int index = hash(alias);
 	Alias* current = aliasTable[index];
 	while (current != NULL) {
 		if (strcmp(current->alias, alias) == 0) {
 			strcpy(current->command, command);
-			return;
+			return (0) ;
 		}
 		current = current->next;
 	}
 	Alias* newAlias = (Alias*)malloc(sizeof(Alias));
 	if (newAlias == NULL) {
-		perror("Memory allocation error");
+		perror("error check memory allocation");
 		exit(EXIT_FAILURE);
 	}
 	strcpy(newAlias->alias, alias);
@@ -43,7 +41,6 @@ void addAlias(char* alias, char* command) {
 	newAlias->next = aliasTable[index];
 	aliasTable[index] = newAlias;
 }
-
 void executeAlias(char* alias) {
 	unsigned int index = hash(alias);
 	Alias* current = aliasTable[index];
@@ -60,7 +57,7 @@ void executeAlias(char* alias) {
 int main() {
 	char input[MAX_COMMAND_LEN];
 	while (1) {
-		printf("Enter a command or alias: ");
+		printf("Your Command: ");
 		fgets(input, sizeof(input), stdin);
 		size_t len = strlen(input);
 		if (len > 0 && input[len - 1] == '\n') {
