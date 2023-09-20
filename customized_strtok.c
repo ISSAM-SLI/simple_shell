@@ -13,12 +13,18 @@ static char *strtok_custom(char *str, const char *delim)
 	char *valeur = malloc(sizeof(char));
 	char *token_start = next_token;
 	char *token_end = strpbrk(next_token, delim);
-
+		
 	if (token_end != NULL) 
 	{
 		*token_end = '\0';
 		next_token = token_end + 1;
-	} else 
+	}
+        else if (token_end = '\0')
+	{
+		break;
+	}	
+	
+	else 
 	{
 		next_token = (NULL);
 	}
