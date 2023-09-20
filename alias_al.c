@@ -21,16 +21,6 @@ unsigned int hash(char* alias) {
 	}
 	return hashval % HASH_TABLE_SIZE;
 }
-void addAlias(char* alias, char* command) {
-	unsigned int index = hash(alias);
-	Alias* current = aliasTable[index];
-	while (current != NULL) {
-		if (strcmp(current->alias, alias) == 0) {
-			strcpy(current->command, command);
-			return (0) ;
-		}
-		current = current->next;
-	}
 	Alias* newAlias = (Alias*)malloc(sizeof(Alias));
 	if (newAlias == NULL) {
 		perror("error check memory allocation");

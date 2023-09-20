@@ -14,10 +14,8 @@ static char *strtok_custom(char *str, const char *delim)
 	{
 		next_token = str;
 	} 
-	else if (next_token == NULL) 
-	{
-		return (NULL);
-	}
+	else if (str == 0)
+		break;
 
 	char *token_start = next_token;
 	char *token_end = strpbrk(next_token, delim);
