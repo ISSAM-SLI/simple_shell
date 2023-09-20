@@ -10,13 +10,7 @@
 static char *strtok_custom(char *str, const char *delim) 
 {
 	static char *next_token = NULL;
-	if (str != NULL) 
-	{
-		next_token = str;
-	} 
-	else if (str == 0)
-		break;
-
+	char *valeur = malloc(sizeof(char));
 	char *token_start = next_token;
 	char *token_end = strpbrk(next_token, delim);
 
