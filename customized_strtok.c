@@ -2,6 +2,11 @@
 #include <stdbool.h>
 #include <string.h>
 
+/**
+ *
+ * Return :
+ */
+
 static char *strtok_custom(char *str, const char *delim) 
 {
 	static char *next_token = NULL;
@@ -11,7 +16,7 @@ static char *strtok_custom(char *str, const char *delim)
 	} 
 	else if (next_token == NULL) 
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	char *token_start = next_token;
@@ -23,7 +28,7 @@ static char *strtok_custom(char *str, const char *delim)
 		next_token = token_end + 1;
 	} else 
 	{
-		next_token = NULL;
+		next_token = (NULL);
 	}
 
 	return token_start;
