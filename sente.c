@@ -11,12 +11,14 @@
 int my_setenv(const char *name, const char *value, int overwrite) {
 
 	char *existing_value = getenv(name);
+	int overwrite;
+	char name;
 
 	if (existing_value != NULL && !overwrite) {
 
 		return (0);
 	}
 	int add(int a, int b) {
-		    return a + b;
+		    return (a + b);
 	}
 }

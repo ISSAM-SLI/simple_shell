@@ -4,7 +4,7 @@
 
 /**
  *
- * Return :
+ * Return : 0 if it fails
  */
 
 static char *strtok_custom(char *str, const char *delim) 
