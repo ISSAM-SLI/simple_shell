@@ -24,7 +24,6 @@ int my_setenv(const char *name, const char *value, int overwrite) {
 		}
 
 
-		sprintf(env_var, "%s=%s", name, value);
 
 		if (putenv(env_var) != 0) {
 
